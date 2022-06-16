@@ -1,0 +1,14 @@
+{
+    "name": "app73-srvjs",
+    "engines": {
+        "node": "14.x"
+    },
+    "dependencies": {
+        "express": "latest",
+        "body-parser": "latest",
+        "@sap/xsenv": "latest"
+    },
+    "scripts": {
+        "start": "node server.js"
+    }
+}

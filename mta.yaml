@@ -34,6 +34,25 @@ modules:
           srv-url: ${default-url}
 
 
+  # ------------- ADDITIONAL SERVER MODULE - Node.js -----------
+  - name: app73-srvjs
+  # ------------------------------------------------------------
+    type: nodejs
+    path: srvjs
+    build-parameters:
+      ignore:
+        - default-*.json
+        - .env
+        - "*node_modules*"
+    parameters:
+        buildpack: nodejs_buildpack
+        memory: 512M
+        disk-quota: 1024M
+    requires:
+    provides:
+      - name: srvjs-api
+        properties:
+          srvjs-url: ${default-url}
 
 
   # ------------------ APP ROUTER MODULE -----------------------
@@ -55,6 +74,12 @@ modules:
         properties:
           name: srv
           url: ~{srv-url}
+          timeout: 60000
+      - name: srvjs-api
+        group: destinations
+        properties:
+          name: srvjs
+          url: ~{srvjs-url}
           timeout: 60000
 
 
